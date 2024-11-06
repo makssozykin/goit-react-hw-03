@@ -1,9 +1,14 @@
-export const Contact = ({ name, number }) => {
+export const Contact = ({ contact, onDelete }) => {
+  const { id, name, number } = contact;
   return (
-    <li>
-      <p>{name}</p>
-      <p>{number}</p>
-      <button>Delete</button>
-    </li>
+    <>
+      <div>
+        <p>{name}</p>
+        <p>{number}</p>
+      </div>
+      <button type="button" onClick={() => onDelete(id)}>
+        Delete
+      </button>
+    </>
   );
 };

@@ -20,7 +20,7 @@ function App() {
   const [search, setSearch] = useState('');
 
   const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(search.toLowerCase())
+    contact.name.toLowerCase().startsWith(search.toLowerCase())
   );
 
   const addContact = contactData => {

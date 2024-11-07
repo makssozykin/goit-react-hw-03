@@ -35,3 +35,13 @@
   border-bottom: 1px solid lightgray;
   scroll-snap-align: start;
 }
+
+.contact-no-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 330px;
+  font-size: 2rem;
+  color: rgb(52, 49, 49);
+}

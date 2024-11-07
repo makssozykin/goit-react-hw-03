@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Title from './components/Title/Title';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { SearchBox } from './components/SearchBox/SearchBox';
 import { ContactList } from './components/ContactList/ContactList';
@@ -22,9 +23,17 @@ function App() {
     contact.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const addContact = contact => {
+  const addContact = contactData => {
+    const isInContacts = contacts.some(
+      ({ name }) => name.toLowerCase() === contactData.name.toLowerCase()
+    );
+
+    if (isInContacts) {
+      alert(`${contactData.name} is already in contacts.`);
+      return;
+    }
     setContacts(prev => {
-      return [...prev, contact];
+      return [...prev, contactData];
     });
   };
 
@@ -37,12 +46,12 @@ function App() {
   }, [contacts]);
 
   return (
-    <>
-      <h1>Phonebook</h1>
+    <div className="app">
+      <Title title="Phonebook" />
       <ContactForm onAddContact={addContact} />
       <SearchBox value={search} onSearch={setSearch} />
       <ContactList contacts={visibleContacts} onDelete={deleteContact} />
-    </>
+    </div>
   );
 }
 
